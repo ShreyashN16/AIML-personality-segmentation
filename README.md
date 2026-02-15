@@ -1,189 +1,108 @@
-# 🧠 AI-Based Personality Segmentation & Behavioral Classification System
+# Why Are You Still Single? - 3D AI Personality Experience 💔
 
-An end-to-end Machine Learning project that predicts behavioral personality archetypes using structured psychometric-style features and multi-class classification models.
+A modern, interactive 3D web application that uses Machine Learning to brutally roast your dating life. 
 
-This project demonstrates how supervised learning techniques can be applied to behavioral analytics and personality-driven segmentation using synthetic yet statistically structured datasets.
+![Project Banner](https://via.placeholder.com/1200x500.png?text=Why+Are+You+Still+Single%3F+AI+App)
 
----
-
-## 🚀 Project Overview
-
-The system takes numerical behavioral indicators (1–10 scale) such as:
-
-- Emotional Availability  
-- Career Prioritization  
-- Trust Sensitivity  
-- Communication Responsiveness  
-- Social Energy  
-- Romantic Inclination  
-- Self-Growth Focus  
-- Pickiness Level  
-- Jealousy Index  
-- Texting Frequency  
-
-It predicts a personality archetype using probabilistic multi-class classification.
-
-### Example Output Categories:
-
-- Emotionally_Unavailable  
-- Career_Obsessed  
-- Overthinker  
-- Too_Picky  
-- Hopeless_Romantic  
-- Main_Character_Energy  
-- Situationship_Survivor  
-
-The model returns:
-- ✅ Predicted Class  
-- 📊 Confidence Probability  
-- 📈 Feature Importance  
-- 🧩 Behavioral Radar Visualization  
+## 🚀 Concept
+This is **not** a basic form. It's an immersive experience.
+- **Frontend**: React + Vite + Three.js + Framer Motion (Neon Glassmorphism UI)
+- **Backend**: FastAPI + Python
+- **AI Engine**: XGBoost / Random Forest trained on synthetic personality data
+- **Explainability**: SHAP (SHapley Additive exPlanations) to tell you *exactly* why you're alone.
 
 ---
 
-## 🏗 Technical Architecture
-
-### 🔹 Data Layer
-- Synthetic dataset generation (2,000+ structured samples)
-- Controlled feature distributions
-- Balanced class representation
-- Reproducible random seed
-
-### 🔹 Machine Learning
-- Logistic Regression
-- Random Forest Classifier
-- XGBoost
-- Cross-validation
-- Model comparison
-- Confusion matrix analysis
-- Probability-based inference
-- SHAP explainability
-
-### 🔹 Backend
-- Python 3.10+
-- FastAPI (REST API)
-- Model serialization with Joblib
-
-### 🔹 Frontend
-- React + Vite
-- Tailwind CSS
-- Radar Charts (Recharts / Chart.js)
-- Optional 3D UI elements (Three.js)
+## 🛠 Tech Stack
+- **ML/Backend:** Python, FastAPI, Scikit-Learn, Pandas, XGBoost, SHAP
+- **Frontend:** React, TailwindCSS, Framer Motion, React-Three-Fiber
+- **Deployment:** Render (Backend), Vercel (Frontend)
 
 ---
 
-## 📊 Model Evaluation
+## 📦 Installation & Setup
 
-- Multi-class classification metrics
-- Accuracy comparison across models
-- Cross-validation performance
-- Feature importance ranking
-- SHAP-based explainability
-
----
-
-## 📁 Project Structure
-
-```
-singles_ai/
-│
-├── backend/
-│   ├── train.py
-│   ├── main.py
-│   ├── utils.py
-│   ├── model.pkl
-│   └── data/
-│
-├── frontend/
-│   ├── src/
-│   ├── components/
-│   ├── pages/
-│   └── App.jsx
-│
-├── requirements.txt
-└── README.md
-```
-
----
-
-## ⚙️ Installation
-
-### 1️⃣ Clone Repository
-
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/ai-personality-segmentation.git
-cd ai-personality-segmentation
+git clone https://github.com/yourusername/singles-ai-3d.git
+cd singles-ai-3d
 ```
 
-### 2️⃣ Backend Setup
-
+### 2. Backend Setup (Python)
+Navigate to the backend folder and install dependencies:
 ```bash
 cd backend
-pip install -r requirements.txt
-python train.py
-uvicorn main:app --reload
+python -m venv venv
+# Windows
+.\venv\Scripts\activate
+# Mac/Linux
+source venv/bin/activate
+
+pip install -r ../requirements.txt
 ```
 
-### 3️⃣ Frontend Setup
+**Important:** Generate data and train the model before running the server.
+```bash
+# Generate synthetic dataset (2000 samples)
+python generate_data.py
 
+# Train the ML models and save the best one
+python train.py
+```
+
+Start the FastAPI server:
+```bash
+python main.py
+# Server running at http://localhost:8000
+```
+
+### 3. Frontend Setup (React)
+Open a new terminal, navigate to the frontend folder:
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
+Open [http://localhost:5173](http://localhost:5173) to view the app.
 
 ---
 
-## 🧪 Applications & Relevance
+## 🌐 Deployment Guide
 
-This project demonstrates concepts used in:
+### Backend (Render.com)
+1. Push code to GitHub.
+2. Create a new **Web Service** on Render.
+3. Connect your repo.
+4. Settings:
+   - **Root Directory**: `backend`
+   - **Build Command**: `pip install -r ../requirements.txt && python train.py` (Run training on build)
+   - **Start Command**: `uvicorn main:app --host 0.0.0.0 --port 10000`
+   - **Environment Variables**: `PYTHON_VERSION` = 3.9
 
-- Behavioral Analytics  
-- Consumer Segmentation  
-- Marketing Intelligence Systems  
-- HR Screening Tools  
-- User Engagement Modeling  
-- Personality-Based Recommendation Systems  
-
----
-
-## 🎯 Key Learning Outcomes
-
-- Designing structured synthetic datasets  
-- Translating behavioral theory into ML features  
-- Multi-class classification implementation  
-- Model comparison & evaluation  
-- Explainable AI integration (SHAP)  
-- Full-stack ML deployment  
-
----
-
-## 🔮 Future Improvements
-
-- Real survey-based dataset integration  
-- Hyperparameter tuning (GridSearch / Bayesian Optimization)  
-- Advanced explainability dashboard  
-- CI/CD pipeline  
-- Cloud deployment (Render / Vercel / AWS)
+### Frontend (Vercel)
+1. Import your repo to Vercel.
+2. Settings:
+   - **Root Directory**: `frontend`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+   - **Framework Preset**: Vite
+3. **Environment Variable**: `VITE_API_URL` = (Your Render Backend URL)
 
 ---
 
-## 📌 Disclaimer
+## 🧠 ML Model Details
+We trained 3 models (`LogisticRegression`, `RandomForest`, `XGBoost`) on 10 behavioral features including:
+- `reply_speed`
+- `emotional_availability`
+- `trust_issues`
 
-This project is built for educational and experimental purposes.  
-It demonstrates probabilistic behavioral classification and is not a psychological diagnostic tool.
-
----
-
-## 🛠 Tech Stack
-
-Python • Scikit-learn • XGBoost • SHAP • Pandas • NumPy • FastAPI • React • Tailwind CSS • Machine Learning • Explainable AI
+The best performing model (typically RandomForest ~92% acc) is selected automatically.
 
 ---
 
-## 💼 Resume Description (Optional)
+## 🎨 Creative Direction
+- **Vibe**: Gen-Z, Neon, Dark Mode, Brutal Honesty.
+- **Visuals**: Floating 3D orbs, glass cards, smooth page transitions.
 
-Developed an end-to-end ML-based personality segmentation system using multi-class classification and explainable AI techniques, deployed with FastAPI and integrated with a modern React frontend.
-
----
-<img>
+## 📄 License
+MIT
